@@ -1,0 +1,120 @@
+POWER BI: DAX AND DASHBOARDS - PROJECT SUMMARY
+==============================================
+
+File name : Power_BI_DAX_Dashboard_Project.xlsx
+Project   : Sales performance analytics (data model, DAX measures,
+            interactive dashboard, publishing plan)
+Dataset   : 300 sample orders (2024-2025), 4 regions, 3 categories,
+            9 products, 60 customers (random sample data)
+
+Note: Power BI Desktop illatha environment-la .pbix create panna mudiyadhu.
+Adhanala ellam Excel-la build pannirukkom: dataset, ready-to-paste DAX code,
+live Excel formulas (DAX result-a verify panna), dashboard demo.
+
+
+SHEET BY SHEET
+--------------
+
+1. Overview
+   - Topic-to-sheet map, Power BI Desktop-la rebuild panra 8 steps,
+     data model (star schema), assumptions.
+
+2. Sales_Data  (Fact table - Excel table name: Sales)
+   - OrderID, OrderDate, Region, Category, Product, Segment, Customer,
+     Quantity, UnitPrice, UnitCost, Discount
+   - Calculated columns: Sales, Profit, Year, MonthNo, Quarter, MarginPct
+
+3. Date_Table  (Calendar dimension - Excel table name: Calendar)
+   - 731 days (2024-2025): Year, MonthNo, MonthName, Quarter, YearMonth,
+     Weekday, IsWeekend. Power BI-la "Mark as date table" panna vendiyadhu.
+
+4. DAX_Measures  (SUM, CALCULATE, FILTER, COUNTROWS)
+   - 15 measures: Total Sales, Total Profit, Total Quantity, Order Count
+     (COUNTROWS), Customer Count (DISTINCTCOUNT), AOV (DIVIDE),
+     Profit Margin %, Technology Sales and West Sales 2025 (CALCULATE),
+     High Value Orders (COUNTROWS + FILTER), Discounted Sales
+     (CALCULATE + FILTER), Technology % of Total (ALL), Margin % (VAR/RETURN),
+     Margin Status (IF), AOV Tier (SWITCH).
+   - Ovvondrukkum: DAX code, Excel equivalent, live result, concept.
+   - DAX function cheat sheet (12 functions).
+
+5. Measure_vs_Column  (Measures versus calculated columns)
+   - Comparison table: when calculated, memory, slicer response, use cases.
+   - Live demo: average of row-level margin (29.49%) vs correct measure
+     SUM(Profit)/SUM(Sales) (29.85%). Ratios measure-ah thaan irukkanum.
+
+6. Time_Intelligence
+   - Monthly table: MoM %, Sales PY, YoY %, YTD, Rolling 3M average.
+   - DAX: SAMEPERIODLASTYEAR, DATEADD, TOTALYTD, TOTALQTD, TOTALMTD,
+     DATESINPERIOD.
+   - 2024 vs 2025 comparison, 2 charts.
+
+7. Dashboard  (KPI cards, slicers, interactive reports)
+   - 3 slicers (dropdowns): Year, Region, Category.
+   - 6 KPI cards: Total Sales, Total Profit, Profit Margin (on/below
+     target), Orders, Units Sold, Average Order Value.
+   - 3 charts: Sales by Month, Region, Category.
+   - Auto insights: top region, top category, best month, margin status.
+   - Slicer maathina ellam recalculate aagum (cross-filtering).
+
+8. Drill_Through  (Drill-through and tooltips)
+   - Drill-through page: products for selected Region and Category.
+   - Tooltip card: select a product to see sales, profit, margin,
+     units, best region, share of total.
+   - Drill-down: Year > Quarter > Month for selected Region and Category.
+
+9. Design_Principles  (Dashboard design principles)
+   - 13-point checklist with how each is applied in this project.
+   - One-page layout wireframe (title, slicers, KPIs, trend, ranking,
+     breakdown, detail table).
+
+10. Publish_Share  (Publish, refresh and share)
+   - Publish steps (Desktop to Service).
+   - Refresh modes: Import, DirectQuery, Live connection, Incremental,
+     Manual. Gateway notes.
+   - Sharing: workspace roles, share link, App, Row-level security,
+     export, embed.
+   - 10-point pre-publish checklist with progress %.
+
+
+KEY RESULTS (sample data)
+-------------------------
+Total Sales    = Rs. 77,55,125 (7,755,124.5)
+Total Profit   = Rs. 23,15,150
+Profit Margin  = 29.9% (target 25%, Healthy)
+Orders         = 300      | Customers = 59
+Avg Order Value = Rs. 25,850
+Technology     = 62.7% of total sales
+High value orders (> Rs. 50,000) = 31
+2025 vs 2024 sales growth = 76.9%
+
+
+VERIFICATION DONE
+-----------------
+- 7,253 formulas recalculated, zero errors.
+- Total sales, profit, orders, customers, category/region/year totals,
+  YoY, YTD, slicer filters (Year=2025, Region=West, Category=Technology),
+  drill-through and quarter-to-month drill-down all checked against an
+  independent pandas calculation. All matched.
+
+
+ASSUMPTIONS
+-----------
+- Dataset neenga kudukala, so random sample data (fixed seed) create pannen.
+- High-value order threshold = Rs. 50,000
+- Discount threshold = 10%
+- Margin target = 25%
+- Intha 3 values DAX_Measures sheet-la yellow cells-la maathikalam.
+- Refresh limits (Pro 8/day, Premium 48/day) Microsoft maathina maarum;
+  submit panna munnadi docs-la check pannunga.
+
+
+HOW TO USE
+----------
+- Blue text = inputs, black = formulas, green = links to other sheets,
+  yellow fill = cells you can change.
+- Own data irundha Sales_Data-la rows replace pannunga (300 rows-ku mela
+  irundha formulas range extend pannanum).
+- Power BI-la build panna: Overview sheet-la irukkura 8 steps follow
+  pannunga, DAX_Measures and Time_Intelligence-la irundhu DAX code copy
+  paste pannunga.
